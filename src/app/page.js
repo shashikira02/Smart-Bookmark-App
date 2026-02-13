@@ -1,13 +1,14 @@
-import LoginButton from "@/components/auth/LoginButton";
-import Image from "next/image";
+import { supabase } from "../lib/supabase/supabaseClient";
 
-export default function Home() {
+export default async function Home() {
+  console.log("Supabase initialized:", !!supabase);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <h1>
-          Smart Bookmark APP 
-        </h1>
-        <LoginButton/>
+    <div className="flex flex-col items-center justify-center min-h-[70vh]">
+      <h1 className="text-3xl font-bold mb-6">
+        Smart Bookmark App
+      </h1>
+      <p>Supabase connected successfully.</p>
     </div>
   );
 }
