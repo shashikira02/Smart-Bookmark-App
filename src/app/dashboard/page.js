@@ -1,13 +1,11 @@
-import LoginButton from "@/components/auth/LoginButton";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <h1>
-          Smart Bookmark APP 
+          Dashboard 
         </h1>
-        <LoginButton/>
     </div>
   );
 }
