@@ -1,11 +1,36 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import useAuth from "@/hooks/useAuth";
+
+export default function Dashboard() {
+  const { user, loading, signOut } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/");
+    }
+  }, [user, loading, router]);
+
+  if (loading) return <p>Loading...</p>;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <h1>
-          Dashboard 
-        </h1>
+    <div>
+      <div className="flex justify-between mb-6">
+        <h2 className="text-2xl font-semibold">
+          Dashboard
+        </h2>
+        <button
+          onClick={signOut}
+          className="bg-red-500 text-white px-3 py-1 rounded"
+        >
+          Logout
+        </button>
+      </div>
+
+      <p>Welcome, {user?.email}</p>
     </div>
   );
 }
