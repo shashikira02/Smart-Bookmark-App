@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useAuth from "@/hooks/useAuth";
+import BookmarkForm from "@/components/bookmarks/BookmarkForm";
+import BookmarkList from "@/components/bookmarks/BookmarkList";
 
 export default function Dashboard() {
   const { user, loading, signOut } = useAuth();
@@ -30,7 +32,11 @@ export default function Dashboard() {
         </button>
       </div>
 
-      <p>Welcome, {user?.email}</p>
+      <p className="mb-4">Welcome, {user?.email}</p>
+
+      <BookmarkForm user={user} />
+      <BookmarkList user={user} />
+
     </div>
   );
 }
